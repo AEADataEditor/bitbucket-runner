@@ -4,9 +4,9 @@
 #
 # Every entry ends with MARKER, which is how the scripts find their own lines
 # and leave all other crontab lines alone. Set CRONTAB to use another crontab
-# command (for testing).
+# command (for testing). RUNNER_DIR is the directory holding these scripts.
 
-RUNNER_DIR=/home/bitbucket-runner
+RUNNER_DIR=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 MARKER='# bitbucket-runner-maintenance'
 CRONTAB="${CRONTAB:-crontab}"
 

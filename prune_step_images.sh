@@ -4,13 +4,14 @@
 #
 # Only images that match PATTERNS and that no container (running or stopped)
 # uses are removed. Bitbucket pulls them again when a step needs them. A plain
-# "docker image prune -a" is NOT safe on this machine: it would also remove the
-# images of stacks that happen to be down (openwebui, litellm, firefly-iii, ...).
+# "docker image prune -a" is NOT safe on a shared host: it would also remove the
+# images of other stacks that happen to be down.
+# Add a pattern here for each step image your pipelines use.
 #
 # Usage: prune_step_images.sh [--dry-run]
 
 PATTERNS=(
-    '^python:'                                          # step image of p-pii-checker
+    '^python:'                                          # step images (python:*)
     '^docker-public\.packages\.atlassian\.com/sox/atlassian/'  # runner and its helper images
 )
 
