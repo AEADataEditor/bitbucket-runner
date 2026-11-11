@@ -1,0 +1,4 @@
+# runner credentials
+.env
+# output of the cron jobs
+logs/
